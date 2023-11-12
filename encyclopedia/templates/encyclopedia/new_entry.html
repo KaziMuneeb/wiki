@@ -1,0 +1,29 @@
+{% extends "encyclopedia/z_layout.html" %}
+
+{% block title %}
+    New entry
+{% endblock %}
+
+{% block body %}
+
+{% if message %}
+<div class="alert alert-danger" role="alert">
+    <strong>{{message}}</strong> <br>
+    <a href="{% url 'new_entry' %}" class="alert-link text-primary">Add a new entry </a>
+</div>
+{% endif %}
+
+<form action="{% url 'new_entry'%}" method="post">
+    {% csrf_token %}
+    <h1>Title</h1>
+    <div class="form-group col-8">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" cols="8" name="title">{{title}}</textarea>
+    </div>
+    <h1>Markdown content</h1>
+    <div class="form-group col-8">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" cols="8" name="content">{{content}}</textarea>
+    </div>
+    <input type="submit" value="Save">
+</form>
+
+{% endblock %}

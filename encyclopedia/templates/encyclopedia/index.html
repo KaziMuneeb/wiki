@@ -1,0 +1,18 @@
+{% extends "encyclopedia/z_layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>{{heading}}</h1>
+
+    <ul>
+        {% for entry in entries %}
+        <a href="{% url 'display' entry %}">
+            <li>{{ entry }}</li>
+        </a>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
